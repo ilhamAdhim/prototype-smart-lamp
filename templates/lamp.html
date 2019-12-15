@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="color :rgb(226, 213, 213)">
+        <a class="navbar-brand" href="lamp.html" style="color :rgb(230, 222, 222);">Smart</a>
+        <button class="navbar-toggler bg-light" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html" style="color :rgb(230, 222, 222);">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="door-management.html" style="color :rgb(230, 222, 222);">Link</a>
+                </li>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <div class="container" style="width:100%;height:100%">
+        <div class="alert alert-success" role="alert" style="margin-top: 2em;margin-bottom: -1em;">
+            Current brightness is {{brightness_value}} with electricity_usage = {{KWHValue}} KWH
+        </div>
+        <div class="text-center" style="margin-top: 80px;">
+            <h1>
+                Lamps Control System <br><br>
+                <button type="button" id="allButtonOn" onclick="onclickAllLamps('ToTurnOn','{{brightness_value}}')"
+                    class="btn btn-warning"></button>
+                <button id="buttonCount" type="button" class="btn btn-info" data-target="#my-modal" data-toggle="modal">
+                    Input KWH </button>
+                <button type="button" id="allButtonOff" onclick="onclickAllLamps('ToTurnOff','{{brightness_value}}')"
+                    class="btn btn-warning"></button>
+
+            </h1>
+        </div>
+        <table class="table" style="text-align:center;">
+            <thead>
+                <tr>
+                    <th> Lamp 1 <br>
+                        <button id="button1" type="button" class="btn btn-warning" onclick="onclickLamps('0',{{brightness_value}})">
+                            Turn On</button>
+                    </th>
+                    <th> Lamp 2 <br>
+                        <button id="button2" type="button" class="btn btn-warning" onclick="onclickLamps('1',{{brightness_value}})">
+                            Turn On</button>
+                    </th>
+                    <th> Lamp 3 <br>
+                        <button id="button3" type="button" class="btn btn-warning" onclick="onclickLamps('2',{{brightness_value}})">
+                            Turn On</button>
+                    </th>
+                </tr>
+            </thead>
+
+
+
+            <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="my-modal-title">Smart Home Demo</h5>
+                            <button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/home" method="POST">
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <input type="text" placeholder="Enter KWH..." name="KWHValue"
+                                            style="width:100%;">
+                                    </div>
+                                    <div class="col-sm-6" style="right:-6em">
+                                        <input type="submit" value="Submit" class="btn btn-info">
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <tbody>
+                <tr>
+                    <td scope="row" id="status1"></td>
+                    <td id="status2" style="height: 45vh;"></td>
+                    <td id="status3" style="height: 45vh;"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../static/logic.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
