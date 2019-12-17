@@ -8,15 +8,16 @@ app = Flask(__name__)
 def home():
     # Return to the same page but with different brightness and electricity usage from html input
     if request.method == 'POST':
+        # Perform the whole fuzzy process 
         brightness = main(request.form['KWHValue'])
         return render_template('lamp.html',
-        brightness_value =  brightness,
+        brightness_value =  '%.2f' % brightness,
         KWHValue = request.form['KWHValue'])
     # Default configuration
     return render_template('lamp.html',
-    brightness_value =  50,
+    brightness_value =  55.00,
     KWHValue = 500)
         
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
